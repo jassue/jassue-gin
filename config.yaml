@@ -1,0 +1,5 @@
+app:
+  env: local
+  port: 8888
+  app_name: gin-app
+  app_url: http://localhost
