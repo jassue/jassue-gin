@@ -3,3 +3,14 @@ app:
   port: 8888
   app_name: gin-app
   app_url: http://localhost
+
+log:
+  level: info
+  root_dir: ./storage/logs
+  filename: app.log
+  format:
+  show_line: true
+  max_backups: 3
+  max_size: 500
+  max_age: 28
+  compress: true
