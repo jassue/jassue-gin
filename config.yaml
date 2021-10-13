@@ -14,3 +14,17 @@ log:
   max_size: 500
   max_age: 28
   compress: true
+
+database:
+  driver: mysql
+  host: 127.0.0.1
+  port: 8306
+  database: go-test
+  username: root
+  password: root
+  charset: utf8mb4
+  max_idle_conns: 10
+  max_open_conns: 100
+  log_mode: info
+  enable_file_log_writer: true
+  log_filename: sql.log
