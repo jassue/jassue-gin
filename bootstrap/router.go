@@ -21,7 +21,8 @@ func setupRouter() *gin.Engine {
     router.Static("/assets", "./static/dist/assets")
     router.StaticFile("/favicon.ico", "./static/dist/favicon.ico")
     // 其他静态资源
-    router.Static("/public", "./storage/app/public")
+    router.Static("/public", "./static")
+    router.Static("/storage", "./storage/app/public")
 
     // 注册 api 分组路由
     apiGroup := router.Group("/api")
