@@ -28,3 +28,7 @@ database:
   log_mode: info
   enable_file_log_writer: true
   log_filename: sql.log
+
+jwt:
+  secret: 3Bde3BGEbYqtqyEUzW3ry8jKFcaPH17fRmTmqE7MDr05Lwj95uruRKrrkb44TJ4s
+  jwt_ttl: 43200
