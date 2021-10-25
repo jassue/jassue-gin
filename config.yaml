@@ -32,3 +32,10 @@ database:
 jwt:
   secret: 3Bde3BGEbYqtqyEUzW3ry8jKFcaPH17fRmTmqE7MDr05Lwj95uruRKrrkb44TJ4s
   jwt_ttl: 43200
+  jwt_blacklist_grace_period: 10
+
+redis:
+  host: 127.0.0.1
+  port: 6379
+  db: 0
+  password:

@@ -21,7 +21,7 @@ func JWTAuth(GuardName string) gin.HandlerFunc {
         token, err := jwt.ParseWithClaims(tokenStr, &services.CustomClaims{}, func(token *jwt.Token) (interface{}, error) {
             return []byte(global.App.Config.Jwt.Secret), nil
         })
-        if err != nil {
+        if err != nil || services.JwtService.IsInBlacklist(tokenStr) {
             response.TokenFail(c)
             c.Abort()
             return

@@ -1,8 +1,11 @@
 package services
 
 import (
+    "context"
     "github.com/dgrijalva/jwt-go"
     "jassue-gin/global"
+    "jassue-gin/utils"
+    "strconv"
     "time"
 )
 
@@ -30,7 +33,6 @@ type TokenOutPut struct {
     TokenType string `json:"token_type"`
 }
 
-// CreateToken 生成 Token
 func (jwtService *jwtService) CreateToken(GuardName string, user JwtUser) (tokenData TokenOutPut, err error, token *jwt.Token) {
     token = jwt.NewWithClaims(
         jwt.SigningMethodHS256,
@@ -52,4 +54,27 @@ func (jwtService *jwtService) CreateToken(GuardName string, user JwtUser) (token
         TokenType,
     }
     return
+}
+
+func (jwtService *jwtService) getBlackListKey(tokenStr string) string {
+    return "jwt_black_list:" + utils.MD5([]byte(tokenStr))
+}
+
+func (jwtService *jwtService) JoinBlackList(token *jwt.Token) (err error) {
+    nowUnix := time.Now().Unix()
+    timer := time.Duration(token.Claims.(*CustomClaims).ExpiresAt - nowUnix) * time.Second
+    err = global.App.Redis.SetNX(context.Background(), jwtService.getBlackListKey(token.Raw), nowUnix, timer).Err()
+    return
+}
+
+func (jwtService *jwtService) IsInBlacklist(tokenStr string) bool {
+    joinUnixStr, err := global.App.Redis.Get(context.Background(), jwtService.getBlackListKey(tokenStr)).Result()
+    joinUnix, err := strconv.ParseInt(joinUnixStr, 10, 64)
+    if joinUnixStr == "" || err != nil {
+        return false
+    }
+    if time.Now().Unix()-joinUnix < global.App.Config.Jwt.JwtBlacklistGracePeriod {
+        return false
+    }
+    return true
 }
