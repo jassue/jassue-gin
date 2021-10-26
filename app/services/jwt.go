@@ -2,6 +2,7 @@ package services
 
 import (
     "context"
+    "errors"
     "github.com/dgrijalva/jwt-go"
     "jassue-gin/global"
     "jassue-gin/utils"
@@ -25,6 +26,7 @@ type CustomClaims struct {
 
 const (
     TokenType = "bearer"
+    AppGuardName = "app"
 )
 
 type TokenOutPut struct {
@@ -77,4 +79,14 @@ func (jwtService *jwtService) IsInBlacklist(tokenStr string) bool {
         return false
     }
     return true
+}
+
+func (jwtService *jwtService) GetUserInfo(GuardName string, id string) (err error, user JwtUser) {
+    switch GuardName {
+    case AppGuardName:
+        return UserService.GetUserInfo(id)
+    default:
+        err = errors.New("guard " + GuardName +" does not exist")
+    }
+    return
 }

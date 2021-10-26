@@ -33,6 +33,7 @@ jwt:
   secret: 3Bde3BGEbYqtqyEUzW3ry8jKFcaPH17fRmTmqE7MDr05Lwj95uruRKrrkb44TJ4s
   jwt_ttl: 43200
   jwt_blacklist_grace_period: 10
+  refresh_grace_period: 1800
 
 redis:
   host: 127.0.0.1
