@@ -43,15 +43,16 @@ func (l *lock) Get() bool {
 }
 
 func (l *lock) Block(seconds int64) bool {
-    starting := time.Now().Unix()
+    timer := time.After(time.Duration(seconds) * time.Second)
     for {
-        if !l.Get() {
-            time.Sleep(time.Duration(1) * time.Second)
-            if time.Now().Unix()-seconds >= starting {
-                return false
+        select {
+        case <-timer:
+            return false
+        default:
+            if l.Get() {
+                return true
             }
-        } else {
-            return true
+            time.Sleep(time.Duration(1) * time.Second)
         }
     }
 }
