@@ -40,3 +40,24 @@ redis:
   port: 6379
   db: 0
   password:
+
+storage:
+  default: local
+  disks:
+    local:
+      root_dir: ./storage/app
+      app_url: http://localhost:8888/storage
+    ali_oss:
+      access_key_id:
+      access_key_secret:
+      bucket:
+      endpoint:
+      is_ssl: true
+      is_private: false
+    qi_niu:
+      access_key:
+      bucket:
+      domain:
+      secret_key:
+      is_ssl: true
+      is_private: false
