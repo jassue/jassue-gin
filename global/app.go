@@ -25,8 +25,8 @@ func (app *Application) Disk(disk... string) storage.Storage {
         diskName = storage.DiskName(disk[0])
     }
     s, err := storage.Disk(diskName)
-    if err != err {
-        return nil
+    if err != nil {
+        panic(err)
     }
     return s
 }
