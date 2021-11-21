@@ -1,14 +1,14 @@
 app:
-  env: local
+  env: 'local'
   port: 8888
-  app_name: gin-app
-  app_url: http://localhost
+  app_name: 'gin-app'
+  app_url: 'http://localhost'
 
 log:
-  level: info
-  root_dir: ./storage/logs
-  filename: app.log
-  format:
+  level: 'info'
+  root_dir: './storage/logs'
+  filename: 'app.log'
+  format: ''
   show_line: true
   max_backups: 3
   max_size: 500
@@ -16,48 +16,48 @@ log:
   compress: true
 
 database:
-  driver: mysql
-  host: 127.0.0.1
+  driver: 'mysql'
+  host: '127.0.0.1'
   port: 8306
-  database: go-test
-  username: root
-  password: root
-  charset: utf8mb4
+  database: 'go-test'
+  username: 'root'
+  password: 'root'
+  charset: 'utf8mb4'
   max_idle_conns: 10
   max_open_conns: 100
-  log_mode: info
+  log_mode: 'info'
   enable_file_log_writer: true
-  log_filename: sql.log
+  log_filename: 'sql.log'
 
 jwt:
-  secret: 3Bde3BGEbYqtqyEUzW3ry8jKFcaPH17fRmTmqE7MDr05Lwj95uruRKrrkb44TJ4s
+  secret: '3Bde3BGEbYqtqyEUzW3ry8jKFcaPH17fRmTmqE7MDr05Lwj95uruRKrrkb44TJ4s'
   jwt_ttl: 43200
   jwt_blacklist_grace_period: 10
   refresh_grace_period: 1800
 
 redis:
-  host: 127.0.0.1
+  host: '127.0.0.1'
   port: 6379
   db: 0
-  password:
+  password: ''
 
 storage:
-  default: local
+  default: 'local'
   disks:
     local:
-      root_dir: ./storage/app
-      app_url: http://localhost:8888/storage
+      root_dir: './storage/app'
+      app_url: 'http://localhost:8888/storage'
     ali_oss:
-      access_key_id:
-      access_key_secret:
-      bucket:
-      endpoint:
+      access_key_id: 'access_key_id'
+      access_key_secret: 'access_key_secret'
+      bucket: 'bucket'
+      endpoint: 'endpoint'
       is_ssl: true
       is_private: false
     qi_niu:
-      access_key:
-      bucket:
-      domain:
-      secret_key:
+      access_key: 'access_key'
+      bucket: 'bucket'
+      domain: 'domain'
+      secret_key: 'secret_key'
       is_ssl: true
       is_private: false
