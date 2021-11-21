@@ -4,12 +4,28 @@ import (
     "github.com/gin-gonic/gin"
     "jassue-gin/global"
     "net/http"
+    "os"
 )
 
 type Response struct {
     ErrorCode int `json:"error_code"`
     Data interface{} `json:"data"`
     Message string `json:"message"`
+}
+
+func ServerError(c *gin.Context, err interface{}) {
+    msg := "Internal Server Error"
+    if global.App.Config.App.Env != "production" && os.Getenv(gin.EnvGinMode) != gin.ReleaseMode {
+        if _, ok := err.(error); ok {
+            msg = err.(error).Error()
+        }
+    }
+    c.JSON(http.StatusInternalServerError, Response{
+        http.StatusInternalServerError,
+        nil,
+        msg,
+    })
+    c.Abort()
 }
 
 func Success(c *gin.Context, data interface{}) {

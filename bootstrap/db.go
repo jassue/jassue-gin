@@ -45,6 +45,7 @@ func initMySqlGorm() *gorm.DB {
         DisableForeignKeyConstraintWhenMigrating: true, // 禁用自动创建外键约束
         Logger: getGormLogger(), // 使用自定义 Logger
     }); err != nil {
+        global.App.Log.Error("mysql connect failed, err:", zap.Any("err", err))
         return nil
     } else {
         sqlDB, _ := db.DB()
