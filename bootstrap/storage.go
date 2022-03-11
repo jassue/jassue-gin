@@ -4,7 +4,7 @@ import (
     "github.com/jassue/go-storage/kodo"
     "github.com/jassue/go-storage/local"
     "github.com/jassue/go-storage/oss"
-    "jassue-gin/global"
+    "github.com/jassue/jassue-gin/global"
 )
 
 func InitializeStorage() {

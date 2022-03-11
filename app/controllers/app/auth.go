@@ -3,9 +3,9 @@ package app
 import (
     "github.com/dgrijalva/jwt-go"
     "github.com/gin-gonic/gin"
-    "jassue-gin/app/common/request"
-    "jassue-gin/app/common/response"
-    "jassue-gin/app/services"
+    "github.com/jassue/jassue-gin/app/common/request"
+    "github.com/jassue/jassue-gin/app/common/response"
+    "github.com/jassue/jassue-gin/app/services"
 )
 
 func Register(c *gin.Context) {

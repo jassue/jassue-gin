@@ -1,4 +1,4 @@
-module jassue-gin
+module github.com/jassue/jassue-gin
 
 go 1.17
 

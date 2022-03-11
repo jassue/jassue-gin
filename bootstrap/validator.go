@@ -3,7 +3,7 @@ package bootstrap
 import (
     "github.com/gin-gonic/gin/binding"
     "github.com/go-playground/validator/v10"
-    "jassue-gin/utils"
+    "github.com/jassue/jassue-gin/utils"
     "reflect"
     "strings"
 )

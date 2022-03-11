@@ -3,7 +3,7 @@ package global
 import (
     "context"
     "github.com/go-redis/redis/v8"
-    "jassue-gin/utils"
+    "github.com/jassue/jassue-gin/utils"
     "time"
 )
 

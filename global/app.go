@@ -3,11 +3,11 @@ package global
 import (
     "github.com/go-redis/redis/v8"
     "github.com/jassue/go-storage/storage"
+    "github.com/jassue/jassue-gin/config"
     "github.com/robfig/cron/v3"
     "github.com/spf13/viper"
     "go.uber.org/zap"
     "gorm.io/gorm"
-    "jassue-gin/config"
 )
 
 type Application struct {

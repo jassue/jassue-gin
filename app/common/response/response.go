@@ -2,7 +2,7 @@ package response
 
 import (
     "github.com/gin-gonic/gin"
-    "jassue-gin/global"
+    "github.com/jassue/jassue-gin/global"
     "net/http"
     "os"
 )

@@ -3,8 +3,8 @@ package bootstrap
 import (
     "context"
     "github.com/go-redis/redis/v8"
+    "github.com/jassue/jassue-gin/global"
     "go.uber.org/zap"
-    "jassue-gin/global"
 )
 
 func InitializeRedis() *redis.Client {

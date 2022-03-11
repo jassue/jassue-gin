@@ -3,9 +3,9 @@ package middleware
 import (
     "github.com/dgrijalva/jwt-go"
     "github.com/gin-gonic/gin"
-    "jassue-gin/app/common/response"
-    "jassue-gin/app/services"
-    "jassue-gin/global"
+    "github.com/jassue/jassue-gin/app/common/response"
+    "github.com/jassue/jassue-gin/app/services"
+    "github.com/jassue/jassue-gin/global"
     "strconv"
     "time"
 )

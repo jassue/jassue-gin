@@ -3,9 +3,9 @@ package bootstrap
 import (
     "context"
     "github.com/gin-gonic/gin"
-    "jassue-gin/app/middleware"
-    "jassue-gin/global"
-    "jassue-gin/routes"
+    "github.com/jassue/jassue-gin/app/middleware"
+    "github.com/jassue/jassue-gin/global"
+    "github.com/jassue/jassue-gin/routes"
     "log"
     "net/http"
     "os"

@@ -3,8 +3,8 @@ package bootstrap
 import (
     "fmt"
     "github.com/fsnotify/fsnotify"
+    "github.com/jassue/jassue-gin/global"
     "github.com/spf13/viper"
-    "jassue-gin/global"
     "os"
 )
 

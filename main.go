@@ -1,8 +1,8 @@
 package main
 
 import (
-    "jassue-gin/bootstrap"
-    "jassue-gin/global"
+    "github.com/jassue/jassue-gin/bootstrap"
+    "github.com/jassue/jassue-gin/global"
 )
 
 func main() {

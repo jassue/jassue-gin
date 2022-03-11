@@ -2,10 +2,10 @@ package routes
 
 import (
     "github.com/gin-gonic/gin"
-    "jassue-gin/app/controllers/app"
-    "jassue-gin/app/controllers/common"
-    "jassue-gin/app/middleware"
-    "jassue-gin/app/services"
+    "github.com/jassue/jassue-gin/app/controllers/app"
+    "github.com/jassue/jassue-gin/app/controllers/common"
+    "github.com/jassue/jassue-gin/app/middleware"
+    "github.com/jassue/jassue-gin/app/services"
 )
 
 func SetApiGroupRoutes(router *gin.RouterGroup) {

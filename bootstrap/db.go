@@ -1,14 +1,14 @@
 package bootstrap
 
 import (
+    "github.com/jassue/jassue-gin/app/models"
+    "github.com/jassue/jassue-gin/global"
     "go.uber.org/zap"
     "gopkg.in/natefinch/lumberjack.v2"
     "gorm.io/driver/mysql"
     "gorm.io/gorm"
     "gorm.io/gorm/logger"
     "io"
-    "jassue-gin/app/models"
-    "jassue-gin/global"
     "log"
     "os"
     "strconv"

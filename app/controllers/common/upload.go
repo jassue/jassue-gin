@@ -2,9 +2,9 @@ package common
 
 import (
     "github.com/gin-gonic/gin"
-    "jassue-gin/app/common/request"
-    "jassue-gin/app/common/response"
-    "jassue-gin/app/services"
+    "github.com/jassue/jassue-gin/app/common/request"
+    "github.com/jassue/jassue-gin/app/common/response"
+    "github.com/jassue/jassue-gin/app/services"
 )
 
 func ImageUpload(c *gin.Context) {

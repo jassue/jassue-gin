@@ -2,10 +2,10 @@ package services
 
 import (
     "errors"
-    "jassue-gin/app/common/request"
-    "jassue-gin/app/models"
-    "jassue-gin/global"
-    "jassue-gin/utils"
+    "github.com/jassue/jassue-gin/app/common/request"
+    "github.com/jassue/jassue-gin/app/models"
+    "github.com/jassue/jassue-gin/global"
+    "github.com/jassue/jassue-gin/utils"
     "strconv"
 )
 

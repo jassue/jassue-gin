@@ -2,8 +2,8 @@ package bootstrap
 
 import (
     "fmt"
+    "github.com/jassue/jassue-gin/global"
     "github.com/robfig/cron/v3"
-    "jassue-gin/global"
     "time"
 )
 

@@ -4,8 +4,8 @@ import (
     "context"
     "errors"
     "github.com/dgrijalva/jwt-go"
-    "jassue-gin/global"
-    "jassue-gin/utils"
+    "github.com/jassue/jassue-gin/global"
+    "github.com/jassue/jassue-gin/utils"
     "strconv"
     "time"
 )

@@ -2,9 +2,9 @@ package middleware
 
 import (
     "github.com/gin-gonic/gin"
+    "github.com/jassue/jassue-gin/app/common/response"
+    "github.com/jassue/jassue-gin/global"
     "gopkg.in/natefinch/lumberjack.v2"
-    "jassue-gin/app/common/response"
-    "jassue-gin/global"
 )
 
 func CustomRecovery() gin.HandlerFunc {
