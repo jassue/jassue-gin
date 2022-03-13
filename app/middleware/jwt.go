@@ -1,8 +1,8 @@
 package middleware
 
 import (
-    "github.com/dgrijalva/jwt-go"
     "github.com/gin-gonic/gin"
+    "github.com/golang-jwt/jwt"
     "github.com/jassue/jassue-gin/app/common/response"
     "github.com/jassue/jassue-gin/app/services"
     "github.com/jassue/jassue-gin/global"

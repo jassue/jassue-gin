@@ -3,7 +3,7 @@ package services
 import (
     "context"
     "errors"
-    "github.com/dgrijalva/jwt-go"
+    "github.com/golang-jwt/jwt"
     "github.com/jassue/jassue-gin/global"
     "github.com/jassue/jassue-gin/utils"
     "strconv"
