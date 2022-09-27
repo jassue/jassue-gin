@@ -2,7 +2,7 @@ package middleware
 
 import (
     "github.com/gin-gonic/gin"
-    "github.com/golang-jwt/jwt"
+    "github.com/golang-jwt/jwt/v4"
     "github.com/jassue/jassue-gin/app/common/response"
     "github.com/jassue/jassue-gin/app/services"
     "github.com/jassue/jassue-gin/global"
@@ -37,10 +37,10 @@ func JWTAuth(GuardName string) gin.HandlerFunc {
         }
 
         // token 续签
-        if claims.ExpiresAt-time.Now().Unix() < global.App.Config.Jwt.RefreshGracePeriod {
+        if claims.ExpiresAt.Unix()-time.Now().Unix() < global.App.Config.Jwt.RefreshGracePeriod {
             lock := global.Lock("refresh_token_lock", global.App.Config.Jwt.JwtBlacklistGracePeriod)
             if lock.Get() {
-                err, user := services.JwtService.GetUserInfo(GuardName, claims.Id)
+                err, user := services.JwtService.GetUserInfo(GuardName, claims.ID)
                 if err != nil {
                     global.App.Log.Error(err.Error())
                     lock.Release()
@@ -54,6 +54,6 @@ func JWTAuth(GuardName string) gin.HandlerFunc {
         }
 
         c.Set("token", token)
-        c.Set("id", claims.Id)
+        c.Set("id", claims.ID)
     }
 }

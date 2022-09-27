@@ -2,7 +2,7 @@ package app
 
 import (
     "github.com/gin-gonic/gin"
-    "github.com/golang-jwt/jwt"
+    "github.com/golang-jwt/jwt/v4"
     "github.com/jassue/jassue-gin/app/common/request"
     "github.com/jassue/jassue-gin/app/common/response"
     "github.com/jassue/jassue-gin/app/services"

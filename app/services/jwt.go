@@ -3,7 +3,7 @@ package services
 import (
     "context"
     "errors"
-    "github.com/golang-jwt/jwt"
+    "github.com/golang-jwt/jwt/v4"
     "github.com/jassue/jassue-gin/global"
     "github.com/jassue/jassue-gin/utils"
     "strconv"
@@ -21,7 +21,7 @@ type JwtUser interface {
 
 // CustomClaims 自定义 Claims
 type CustomClaims struct {
-    jwt.StandardClaims
+    jwt.RegisteredClaims
 }
 
 const (
@@ -39,11 +39,11 @@ func (jwtService *jwtService) CreateToken(GuardName string, user JwtUser) (token
     token = jwt.NewWithClaims(
         jwt.SigningMethodHS256,
         CustomClaims{
-            StandardClaims: jwt.StandardClaims{
-                ExpiresAt: time.Now().Unix() + global.App.Config.Jwt.JwtTtl,
-                Id:        user.GetUid(),
+            RegisteredClaims: jwt.RegisteredClaims{
+                ExpiresAt: jwt.NewNumericDate(time.Now().Add(time.Duration(global.App.Config.Jwt.JwtTtl) * time.Second)),
+                ID:        user.GetUid(),
                 Issuer:    GuardName,
-                NotBefore: time.Now().Unix() - 1000,
+                NotBefore: jwt.NewNumericDate(time.Now().Add(-1000*time.Second)),
             },
         },
     )
@@ -64,7 +64,7 @@ func (jwtService *jwtService) getBlackListKey(tokenStr string) string {
 
 func (jwtService *jwtService) JoinBlackList(token *jwt.Token) (err error) {
     nowUnix := time.Now().Unix()
-    timer := time.Duration(token.Claims.(*CustomClaims).ExpiresAt - nowUnix) * time.Second
+    timer := time.Duration(token.Claims.(*CustomClaims).ExpiresAt.Unix() - nowUnix) * time.Second
     err = global.App.Redis.SetNX(context.Background(), jwtService.getBlackListKey(token.Raw), nowUnix, timer).Err()
     return
 }
