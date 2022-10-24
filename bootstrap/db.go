@@ -103,7 +103,7 @@ func getGormLogWriter() logger.Writer {
 
 // 数据库表初始化
 func initMySqlTables(db *gorm.DB) {
-    err := db.AutoMigrate(
+    err := db.Set("gorm:table_options", "ENGINE=InnoDB CHARSET=utf8mb4").AutoMigrate(
         models.User{},
         models.Media{},
     )
